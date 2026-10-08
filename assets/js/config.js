@@ -5,15 +5,15 @@
    ========================================================================== */
 window.VAKUUS_CONFIG = {
   /* ------------------------------------------------------------------
-     Meeting booking (Calendly)
-     Replace `url` with your personal Calendly link, e.g.
-     "https://calendly.com/erdalbirinci/30min"
-     While `placeholder` is true, the site shows the built-in booking
-     panel instead of an empty calendar.
+     Meeting booking (Calendly) — CONNECTED
+     `url` is the live Calendly scheduling page; with
+     `placeholder: false` the contact page embeds the real scheduler
+     (every "Book a Meeting" button opens the same link).
+     Set `placeholder: true` to fall back to the built-in booking panel.
      ------------------------------------------------------------------ */
   calendly: {
     url: "https://calendly.com/erdalbirinci/30min",
-    placeholder: true,
+    placeholder: false,
     text: "Pick a time that suits you — 30 minutes, video call, no obligation."
   },
 

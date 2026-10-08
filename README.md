@@ -28,21 +28,24 @@ assets/js/app.js       header, mobile nav, reveal-on-scroll, contact data inject
 
 No build step, no framework, no npm. Copy the folder to any static host.
 
-## 1. Connect your Calendly
+## 1. Calendly — connected
 
-Open `assets/js/config.js`:
+`assets/js/config.js` holds the scheduling link used by the booking panel:
 
 ```js
 calendly: {
-  url: "https://calendly.com/YOUR-HANDLE/30min",
-  placeholder: false,     // <- set to false once the URL is real
+  url: "https://calendly.com/erdalbirinci/30min",   // live scheduling page
+  placeholder: false,                               // true = built-in fallback panel
   text: "…"
 }
 ```
 
-While `placeholder` is `true`, `contact.html` shows the designed booking panel with an
-“Open the calendar” button. As soon as it is `false`, the Calendly inline scheduler loads in
-the same place (if the script fails, the panel falls back automatically).
+With `placeholder: false`, `contact.html` embeds the real Calendly scheduler in place (if the
+script fails to load, the designed panel with an “Open the calendar” button comes back
+automatically). The widget sizes its iframe from the container's **explicit height**:
+`.calendly-inline-widget` in `assets/css/style.css` sets `height: 700px` (780px on mobile).
+Removing that height makes the scheduler fall back to a 150px iframe and hang behind its
+loading spinner — keep it.
 
 Contact details, company name and domain live in the same file — they are injected into every
 page through `data-contact` / `data-company` attributes, so nothing needs to be changed page by page.

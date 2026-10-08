@@ -972,7 +972,15 @@ table.data .cell-note { display: block; font-size: .8rem; color: var(--muted); m
   min-height: 620px;
   position: relative;
 }
-.calendly-inline-widget { min-height: 620px; }
+/* Calendly sizes its iframe from the container's EXPLICIT height.
+   With only a min-height it falls back to a 150px iframe and the
+   scheduler stays stuck behind its loading spinner — so give it a
+   fixed height (Calendly's own recommended value). */
+.calendly-inline-widget { width: 100%; height: 700px; }
+@media (max-width: 720px) {
+  /* stacked mobile layout inside the scheduler needs a little more room */
+  .calendly-inline-widget { height: 780px; }
+}
 
 .book-fallback { padding: clamp(26px, 3vw, 38px); }
 .book-fallback h3 { margin-bottom: .4em; }
