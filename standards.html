@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standards &amp; Frameworks — ISO 27001, ISO 42001, NIS2, SOC 2, EU AI Act | Vakuus</title>
+<meta name="description" content="A practical library of the standards and regulations Vakuus implements for Finnish startups and SMEs: ISO/IEC 27001, ISO/IEC 42001, ISO/IEC 27701, ISO/IEC 20000-1, NIST CSF, SOC 2, NIS2, EU AI Act and GDPR.">
+<meta name="theme-color" content="#070d1a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Standards &amp; frameworks library — Vakuus">
+<meta property="og:description" content="What each standard proves, who needs it, and how to choose between them.">
+<meta property="og:locale" content="en_GB">
+<link rel="canonical" href="https://vakuus.fi/standards.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2335c8ff'/%3E%3Cstop offset='1' stop-color='%237c5cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%23070d1a'/%3E%3Cpath d='M15 17h10l7 23 7-23h10L36 50h-8z' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="bm1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#35c8ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
+        <path d="M24 3.5 41.5 13v17.2c0 8.1-7.3 12.6-17.5 14.3C13.8 42.8 6.5 38.3 6.5 30.2V13z" fill="rgba(20,214,176,.14)" stroke="url(#bm1)" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M16.6 24.4l5.3 5.3 9.5-11.1" fill="none" stroke="#14d6b0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">Vakuus</span>
+        <span class="brand-tag">Certification Advisory</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="site-nav" data-nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="process.html">Process</a>
+      <a href="standards.html">Standards</a>
+      <a href="about.html">About</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="contact.html">Book a Meeting</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================ PAGE HERO ============================ -->
+  <section class="page-hero">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span><span>Standards</span>
+      </nav>
+      <div class="split split--wide-left">
+        <div>
+          <h1 class="h1 reveal">Nine standards, one question: which one does your customer actually ask for?</h1>
+          <p class="lead reveal" data-delay="1">
+            Frameworks overlap. Obligations arrive together. This library explains what each standard proves,
+            who genuinely needs it, and how they stack — so you invest once and reuse it everywhere.
+          </p>
+          <div class="btn-group mt-3 reveal" data-delay="2">
+            <a class="btn btn-primary btn-lg btn-arrow" href="contact.html">Get a scope recommendation</a>
+            <a class="btn btn-ghost btn-lg" href="#library">Browse the library</a>
+          </div>
+        </div>
+        <div class="panel panel--dark reveal" data-delay="2">
+          <div class="panel-head">
+            <div>
+              <p class="panel-title">Baseline vs. certified target</p>
+              <p class="panel-sub">Indicative maturity across six domains</p>
+            </div>
+            <span class="badge badge--aurora">Model</span>
+          </div>
+          <svg class="chart" data-chart="radar" data-chart-config='{"labels":["Governance","Risk","Access control","Logging","Supplier security","Incident response"],"series":[{"label":"Typical baseline","values":[38,30,52,45,22,40],"color":"#ffb020"},{"label":"Certified target","values":[88,90,86,84,80,86],"color":"#14d6b0"}],"size":340,"rings":4}' role="img" aria-label="Radar chart comparing typical baseline with certified target across six domains"></svg>
+          <div class="legend mt-2">
+            <span class="legend-item"><span class="legend-swatch" style="background:#ffb020"></span>Typical baseline</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#14d6b0"></span>Certified target</span>
+          </div>
+          <p class="panel-foot">Illustrative · your real baseline is measured in the gap assessment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DECISION HELP ============================ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow reveal">Choose with confidence</p>
+        <h2 class="h2 reveal" data-delay="1">Three routes, decided in the first meeting</h2>
+      </div>
+      <div class="strip">
+        <div class="strip-item reveal" data-step="1">
+          <div class="strip-title">A customer asks</div>
+          <div class="strip-desc">If a buyer or partner names the standard, that is your target — usually ISO 27001, sometimes SOC 2 for US SaaS. We close exactly that gap.</div>
+        </div>
+        <div class="strip-item reveal" data-delay="1" data-step="2">
+          <div class="strip-title">A rule applies</div>
+          <div class="strip-desc">NIS2, EU AI Act and GDPR follow from what you operate — sector, data and AI use — not from a customer request. We map the obligation first.</div>
+        </div>
+        <div class="strip-item reveal" data-delay="2" data-step="3">
+          <div class="strip-title">You choose to lead</div>
+          <div class="strip-desc">No requirement yet — but security becomes a differentiator. ISO 27001 is the strongest single signal you can publish.</div>
+        </div>
+        <div class="strip-item reveal" data-delay="3" data-step="4">
+          <div class="strip-title">We recommend</div>
+          <div class="strip-desc">You get a written recommendation: which standard, which scope, in which sequence, and what each one reuses from the previous.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ LIBRARY ============================ -->
+  <section class="section section--paper-2" id="library">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">The library</p>
+        <h2 class="h2 reveal" data-delay="1">What each standard proves — and who it is for</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card card--glow reveal">
+          <div class="flex-between"><span class="badge">Certifiable</span><span class="mono muted" style="font-size:.72rem">2022</span></div>
+          <h3 class="h3 mt-2">ISO/IEC 27001</h3>
+          <p>The information security management system standard. Audited by a certification body, it results in a certificate that procurement, investors and enterprise customers recognise worldwide.</p>
+          <ul class="card-list">
+            <li>Clauses 4–10 + 93 Annex A controls</li>
+            <li>Stage 1 / Stage 2 audit model</li>
+            <li>Surveillance yearly, re-certification every 3 years</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip">Most requested</span></div>
+        </article>
+
+        <article class="card card--glow reveal" data-delay="1">
+          <div class="flex-between"><span class="badge badge--aurora">Certifiable</span><span class="mono muted" style="font-size:.72rem">2023</span></div>
+          <h3 class="h3 mt-2">ISO/IEC 42001 (AIMS)</h3>
+          <p>AI management system. For teams building or operating AI systems who need a defensible answer on governance, data, lifecycle and impact — and a route into EU AI Act alignment.</p>
+          <ul class="card-list">
+            <li>AI inventory and risk classification</li>
+            <li>Data governance and lifecycle control</li>
+            <li>Built on the Annex SL structure, like 27001</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip chip--aurora">AI teams</span></div>
+        </article>
+
+        <article class="card card--glow reveal" data-delay="2">
+          <div class="flex-between"><span class="badge">Extension</span><span class="mono muted" style="font-size:.72rem">2019</span></div>
+          <h3 class="h3 mt-2">ISO/IEC 27701</h3>
+          <p>Privacy information management. Extends ISO 27001 and 27701 controls to GDPR-style accountability — the cleanest way to demonstrate that privacy is managed, not merely documented.</p>
+          <ul class="card-list">
+            <li>Records of processing</li>
+            <li>Controller and processor controls</li>
+            <li>Adds directly onto an existing ISMS</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip">Privacy</span></div>
+        </article>
+
+        <article class="card card--glow reveal">
+          <div class="flex-between"><span class="badge">Certifiable</span><span class="mono muted" style="font-size:.72rem">2019</span></div>
+          <h3 class="h3 mt-2">ISO/IEC 20000-1</h3>
+          <p>IT service management. For companies whose service delivery itself is the product and whose customers ask how incidents, changes and continuity are managed.</p>
+          <ul class="card-list">
+            <li>Service level and incident management</li>
+            <li>Change and release control</li>
+            <li>Frequent in public tenders</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip">IT service providers</span></div>
+        </article>
+
+        <article class="card card--glow reveal" data-delay="1">
+          <div class="flex-between"><span class="badge badge--violet">Report</span><span class="mono muted" style="font-size:.72rem">AICPA</span></div>
+          <h3 class="h3 mt-2">SOC 2</h3>
+          <p>An auditor's report, not a certificate — the de facto entry ticket for SaaS selling into North America. Type I tests design; Type II tests operating effectiveness over a period.</p>
+          <ul class="card-list">
+            <li>Security, availability, confidentiality</li>
+            <li>Processing integrity and privacy optional</li>
+            <li>Overlaps heavily with ISO 27001 controls</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip chip--violet">US market</span></div>
+        </article>
+
+        <article class="card card--glow reveal" data-delay="2">
+          <div class="flex-between"><span class="badge badge--grey">Framework</span><span class="mono muted" style="font-size:.72rem">NIST</span></div>
+          <h3 class="h3 mt-2">NIST CSF 2.0</h3>
+          <p>The common language for cyber risk: Govern, Identify, Protect, Detect, Respond, Recover. Not certifiable — but excellent as the structure underneath your programme and board reporting.</p>
+          <ul class="card-list">
+            <li>Six functions, outcome-based</li>
+            <li>Profile and tier self-assessment</li>
+            <li>Maps cleanly to ISO 27001</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip chip--grey">Risk language</span></div>
+        </article>
+
+        <article class="card card--glow reveal">
+          <div class="flex-between"><span class="badge badge--amber">Directive</span><span class="mono muted" style="font-size:.72rem">EU</span></div>
+          <h3 class="h3 mt-2">NIS2</h3>
+          <p>Cybersecurity obligations for essential and important entities across sectors. Governance, risk measures, incident reporting and supply chain security — expected to be demonstrable, not aspirational.</p>
+          <ul class="card-list">
+            <li>Management accountability</li>
+            <li>Incident reporting timelines</li>
+            <li>ISO 27001 is the natural evidence base</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip chip--amber">Regulated sectors</span></div>
+        </article>
+
+        <article class="card card--glow reveal" data-delay="1">
+          <div class="flex-between"><span class="badge badge--amber">Regulation</span><span class="mono muted" style="font-size:.72rem">EU</span></div>
+          <h3 class="h3 mt-2">EU AI Act</h3>
+          <p>Risk-based rules for AI systems placed on the EU market, phasing in through 2026–2027. Prohibited practices, transparency duties and obligations that scale with the system's risk class.</p>
+          <ul class="card-list">
+            <li>AI system inventory first</li>
+            <li>Classification drives the controls</li>
+            <li>ISO/IEC 42001 as the operating framework</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip chip--amber">AI in production</span></div>
+        </article>
+
+        <article class="card card--glow reveal" data-delay="2">
+          <div class="flex-between"><span class="badge">Regulation</span><span class="mono muted" style="font-size:.72rem">EU</span></div>
+          <h3 class="h3 mt-2">GDPR</h3>
+          <p>Data protection accountability: lawful basis, records, data subject rights, transfers and breach handling. Continuous, not one-off — supported by ISO 27701 for structure.</p>
+          <ul class="card-list">
+            <li>Records of processing activities</li>
+            <li>DPIA triggers and vendor agreements</li>
+            <li>Privacy by design in the SDLC</li>
+          </ul>
+          <div class="chip-row mt-2"><span class="chip">Everyone</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ COMPARISON ============================ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">Comparison</p>
+        <h2 class="h2 reveal" data-delay="1">The same control set, four different proofs</h2>
+        <p class="lead reveal" data-delay="2">Build ISO 27001 once and most of the others become an extension rather than a new project.</p>
+      </div>
+
+      <div class="table-wrap reveal" tabindex="0" role="region" aria-label="Standards comparison table">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Standard</th>
+              <th>What it proves</th>
+              <th>Typical trigger</th>
+              <th>Outcome</th>
+              <th>Reuse from ISO 27001</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ISO/IEC 27001</strong></td>
+              <td>Your security management system works as a system<span class="cell-note">Governed, risk-based, reviewed</span></td>
+              <td>Enterprise customer, tender, investor</td>
+              <td><span class="badge badge--aurora">Certificate</span></td>
+              <td>— (foundation)</td>
+            </tr>
+            <tr>
+              <td><strong>ISO/IEC 42001</strong></td>
+              <td>AI is developed and operated responsibly</td>
+              <td>AI product, EU AI Act questions</td>
+              <td><span class="badge badge--aurora">Certificate</span></td>
+              <td>High — same structure</td>
+            </tr>
+            <tr>
+              <td><strong>ISO/IEC 27701</strong></td>
+              <td>Personal data is governed with evidence</td>
+              <td>Privacy questions, DPA requests</td>
+              <td><span class="badge">Extension</span></td>
+              <td>Very high — add-on</td>
+            </tr>
+            <tr>
+              <td><strong>SOC 2</strong></td>
+              <td>Controls operated effectively over a period</td>
+              <td>US SaaS customer</td>
+              <td><span class="badge badge--violet">Report</span></td>
+              <td>High — controls overlap</td>
+            </tr>
+            <tr>
+              <td><strong>NIS2</strong></td>
+              <td>Legal obligations for regulated entities are met</td>
+              <td>Sector regulation</td>
+              <td><span class="badge badge--amber">Compliance</span></td>
+              <td>High — evidence base</td>
+            </tr>
+            <tr>
+              <td><strong>NIST CSF 2.0</strong></td>
+              <td>Where you stand on cyber risk, in plain language</td>
+              <td>Board and investor reporting</td>
+              <td><span class="badge badge--grey">Self-assessed</span></td>
+              <td>Medium — mapping</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-2 mt-4">
+        <div class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <p class="panel-title">Indicative programme length</p>
+              <p class="panel-sub">Weeks from kickoff to audit outcome, SME scope</p>
+            </div>
+            <span class="badge">Indicative</span>
+          </div>
+          <svg class="chart" data-chart="bars" data-chart-config='{"labels":["ISO 27001","ISO 42001","ISO 20000-1","SOC 2 Type I","NIS2 readiness","EU AI Act"],"values":[16,14,17,12,9,11],"unit":" w","horizontal":true,"width":470,"height":250,"grid":4,"colors":["#14d6b0","#2e6bff","#35c8ff","#7c5cff","#ffb020","#ff5c7a"]}' role="img" aria-label="Indicative programme length in weeks by standard"></svg>
+          <p class="panel-foot">Indicative only · exact duration depends on scope and existing documentation</p>
+        </div>
+
+        <div class="panel reveal" data-delay="1">
+          <div class="panel-head">
+            <div>
+              <p class="panel-title">Reuse between frameworks</p>
+              <p class="panel-sub">Share of controls satisfied by an existing ISO 27001 system</p>
+            </div>
+            <span class="badge badge--aurora">Planning</span>
+          </div>
+          <div class="fit-row"><div class="fit-head"><span class="fit-label">ISO/IEC 27701 extension</span><span class="fit-value">~75%</span></div><div class="fit-track"><i class="fit-fill" data-fill="75%"></i></div></div>
+          <div class="fit-row"><div class="fit-head"><span class="fit-label">SOC 2 Security criteria</span><span class="fit-value">~70%</span></div><div class="fit-track"><i class="fit-fill" data-fill="70%"></i></div></div>
+          <div class="fit-row"><div class="fit-head"><span class="fit-label">NIS2 measure set</span><span class="fit-value">~65%</span></div><div class="fit-track"><i class="fit-fill" data-fill="65%"></i></div></div>
+          <div class="fit-row"><div class="fit-head"><span class="fit-label">ISO/IEC 42001 (AIMS)</span><span class="fit-value">~55%</span></div><div class="fit-track"><i class="fit-fill" data-fill="55%"></i></div></div>
+          <div class="fit-row"><div class="fit-head"><span class="fit-label">ISO/IEC 20000-1</span><span class="fit-value">~50%</span></div><div class="fit-track"><i class="fit-fill" data-fill="50%"></i></div></div>
+          <div class="fit-row"><div class="fit-head"><span class="fit-label">NIST CSF outcomes</span><span class="fit-value">~60%</span></div><div class="fit-track"><i class="fit-fill" data-fill="60%"></i></div></div>
+          <p class="panel-foot">Planning estimates · confirmed by mapping in the gap assessment</p>
+        </div>
+      </div>
+
+      <div class="notice notice--aurora mt-4 reveal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="flex:none;margin-top:2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+        <div><b>Rule of thumb:</b> start with the standard your customer names. If nobody named one yet, ISO 27001 gives you the widest reuse — everything else then attaches to it instead of competing with it.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA ============================ -->
+  <section class="section section--flush-top">
+    <div class="container">
+      <div class="cta-band cta-orbs reveal">
+        <div class="cta-band-inner">
+          <p class="eyebrow" style="justify-content:center">One question, one answer</p>
+          <h2 class="h2">Which standard should you certify against?</h2>
+          <p>Bring the customer email, the tender, or simply the sector you operate in. You will leave the meeting with a written recommendation — scope, sequence and effort included.</p>
+          <div class="btn-group">
+            <a class="btn btn-primary btn-lg btn-arrow" href="contact.html">Book a discovery meeting</a>
+            <a class="btn btn-ghost btn-lg" href="process.html">See the process</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <defs><linearGradient id="bm2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#35c8ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
+            <path d="M24 3.5 41.5 13v17.2c0 8.1-7.3 12.6-17.5 14.3C13.8 42.8 6.5 38.3 6.5 30.2V13z" fill="rgba(20,214,176,.14)" stroke="url(#bm2)" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M16.6 24.4l5.3 5.3 9.5-11.1" fill="none" stroke="#14d6b0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="brand-text">
+            <span class="brand-name">Vakuus</span>
+            <span class="brand-tag">Certification Advisory</span>
+          </span>
+        </a>
+        <p>End-to-end certification consulting for Finnish startups and small &amp; mid-sized companies — from the first gap analysis to every surveillance audit after it.</p>
+        <div class="chip-row">
+          <span class="chip">Espoo, Finland</span>
+          <span class="chip chip--aurora">English</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html#gap">Gap assessment</a></li>
+          <li><a href="services.html#isms">ISMS build</a></li>
+          <li><a href="services.html#risk">Risk assessment</a></li>
+          <li><a href="services.html#audit">Internal audit</a></li>
+          <li><a href="services.html#stage">Certification body support</a></li>
+          <li><a href="services.html#regulatory">EU regulation readiness</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="process.html">The 7-phase process</a></li>
+          <li><a href="standards.html">Standards library</a></li>
+          <li><a href="about.html">About your advisor</a></li>
+          <li><a href="contact.html">Book a meeting</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:erdalbirinci@gmail.com" data-contact="email">erdalbirinci@gmail.com</a></li>
+          <li><a href="tel:+358413191446" data-contact="phone">+358 413191446</a></li>
+          <li><a href="https://linkedin.com/in/codeforwhat/" data-contact="linkedin" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><span data-contact="location">Espoo, Finland</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> <span data-company="name">Vakuus</span>. <span data-company="legal">Independent certification advisory</span>.</span>
+      <span>Every engagement is scoped individually in a meeting.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
