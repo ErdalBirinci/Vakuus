@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <a href="https://erdalbirinci.github.io/VakuusOY/"><img src="https://img.shields.io/badge/live-GitHub%20Pages-14d6b0?style=flat-square" alt="Live on GitHub Pages"></a>
-  <a href="https://github.com/ErdalBirinci/VakuusOY"><img src="https://img.shields.io/badge/pages-6-orange?style=flat-square" alt="6 pages"></a>
+  <a href="https://erdalbirinci.github.io/Vakuus/"><img src="https://img.shields.io/badge/live-GitHub%20Pages-14d6b0?style=flat-square" alt="Live on GitHub Pages"></a>
+  <a href="https://github.com/ErdalBirinci/Vakuus"><img src="https://img.shields.io/badge/pages-6-orange?style=flat-square" alt="6 pages"></a>
   <a href="#chart-kit"><img src="https://img.shields.io/badge/charts-17%20SVG%20%C2%B7%209%20types-7c5cff?style=flat-square" alt="17 SVG charts in 9 types"></a>
   <img src="https://img.shields.io/badge/build-none%20%C2%B7%20zero%20dependencies-2e6bff?style=flat-square" alt="No build step, zero dependencies">
   <a href="#quality-assurance"><img src="https://img.shields.io/badge/a11y-axe%200%20violations-067764?style=flat-square" alt="axe-core 0 violations"></a>
@@ -33,7 +33,7 @@
     <td width="50%">
       <img src="docs/preview-roadmap.jpg" alt="Seven phases, one roadmap" width="100%"><br>
       <sub><strong>The journey.</strong> Seven phases with weeks, outputs and sign-off gates — the same
-      roadmap is detailed on <a href="https://erdalbirinci.github.io/VakuusOY/process.html">Process</a>.</sub>
+      roadmap is detailed on <a href="https://erdalbirinci.github.io/Vakuus/process.html">Process</a>.</sub>
     </td>
     <td width="50%">
       <img src="docs/preview-charts.jpg" alt="Charts section — where certification effort is lost" width="100%"><br>
@@ -44,7 +44,7 @@
   <tr>
     <td colspan="2">
       <img src="docs/preview-booking.jpg" alt="Contact page with the live Calendly scheduler" width="100%"><br>
-      <sub><strong>The conversion.</strong> <a href="https://erdalbirinci.github.io/VakuusOY/contact.html">Contact</a>
+      <sub><strong>The conversion.</strong> <a href="https://erdalbirinci.github.io/Vakuus/contact.html">Contact</a>
       embeds the real Calendly scheduler; every “Book a Meeting” button on every page points to it.</sub>
     </td>
   </tr>
@@ -64,7 +64,7 @@
 | **Booking** | Live Calendly embed — `calendly.com/erdalbirinci/30min` |
 | **Accessibility** | axe-core (WCAG 2.1 AA): **0 violations** · Lighthouse a11y **1.0** · SEO **1.0** |
 | **Pricing** | **None anywhere** — commercial scoping only happens inside a meeting |
-| **Live** | <https://erdalbirinci.github.io/VakuusOY/> |
+| **Live** | <https://erdalbirinci.github.io/Vakuus/> |
 
 ---
 
@@ -72,12 +72,12 @@
 
 | File | Purpose | Live |
 |---|---|---|
-| `index.html` | Positioning, 7-phase route panel, services overview, audience, credibility, FAQ | [open](https://erdalbirinci.github.io/VakuusOY/) |
-| `services.html` | Six service blocks — `#gap` `#isms` `#risk` `#audit` `#stage` `#regulatory` | [open](https://erdalbirinci.github.io/VakuusOY/services.html) |
-| `process.html` | The 7 phases in detail: gantt timeline, effort split, sign-off gates, FAQ | [open](https://erdalbirinci.github.io/VakuusOY/process.html) |
-| `standards.html` | Standards library: ISO 27001 · 42001 · 27701 · 20000-1, SOC 2, NIST CSF, NIS2, EU AI Act, GDPR | [open](https://erdalbirinci.github.io/VakuusOY/standards.html) |
-| `about.html` | Erdal Birinci — competencies and working principles (explicitly **not** a CV) | [open](https://erdalbirinci.github.io/VakuusOY/about.html) |
-| `contact.html` | Booking page: agenda, live scheduler, contact routes, FAQ | [open](https://erdalbirinci.github.io/VakuusOY/contact.html) |
+| `index.html` | Positioning, 7-phase route panel, services overview, audience, credibility, FAQ | [open](https://erdalbirinci.github.io/Vakuus/) |
+| `services.html` | Six service blocks — `#gap` `#isms` `#risk` `#audit` `#stage` `#regulatory` | [open](https://erdalbirinci.github.io/Vakuus/services.html) |
+| `process.html` | The 7 phases in detail: gantt timeline, effort split, sign-off gates, FAQ | [open](https://erdalbirinci.github.io/Vakuus/process.html) |
+| `standards.html` | Standards library: ISO 27001 · 42001 · 27701 · 20000-1, SOC 2, NIST CSF, NIS2, EU AI Act, GDPR | [open](https://erdalbirinci.github.io/Vakuus/standards.html) |
+| `about.html` | Erdal Birinci — competencies and working principles (explicitly **not** a CV) | [open](https://erdalbirinci.github.io/Vakuus/about.html) |
+| `contact.html` | Booking page: agenda, live scheduler, contact routes, FAQ | [open](https://erdalbirinci.github.io/Vakuus/contact.html) |
 
 Every page ends in the same conversion path: **book a discovery meeting**.
 
@@ -169,7 +169,7 @@ flowchart TD
 ### Repository layout
 
 ```text
-VakuusOY/
+Vakuus/
 ├─ index.html            home — hero route panel, services, audience, credibility, FAQ
 ├─ services.html         six service blocks with anchors
 ├─ process.html          7 phases · gantt · effort split · sign-off gates
@@ -252,10 +252,10 @@ Double-clicking the `.html` files also works: there is no fetch/XHR anywhere in 
 
 ## 🚀 Deploy
 
-1. Push to `main` on **[ErdalBirinci/VakuusOY](https://github.com/ErdalBirinci/VakuusOY)**.
+1. Push to `main` on **[ErdalBirinci/Vakuus](https://github.com/ErdalBirinci/Vakuus)**.
 2. **Settings → Pages → Deploy from branch → `main` / `root`** (already enabled).
 3. ~25 seconds later the site is live at
-   **<https://erdalbirinci.github.io/VakuusOY/>**.
+   **<https://erdalbirinci.github.io/Vakuus/>**.
 
 The same folder also runs unchanged on Netlify, Vercel, Cloudflare Pages or any nginx/Apache
 document root.
