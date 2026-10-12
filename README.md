@@ -18,6 +18,7 @@
   <a href="#quality-assurance"><img src="https://img.shields.io/badge/a11y-axe%200%20violations-067764?style=flat-square" alt="axe-core 0 violations"></a>
   <a href="#quality-assurance"><img src="https://img.shields.io/badge/Lighthouse-1.0%20a11y%20%C2%B7%201.0%20SEO-0a1526?style=flat-square" alt="Lighthouse 1.0 accessibility and SEO"></a>
   <a href="#content-rules"><img src="https://img.shields.io/badge/pricing-none%20on%20the%20site-e8590c?style=flat-square" alt="No pricing information anywhere"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT%20%C2%B7%20content-CC%20BY%204.0-067764?style=flat-square" alt="MIT code, CC BY 4.0 content"></a>
 </p>
 
 ---
@@ -180,6 +181,7 @@ Vakuus/
 ├─ contact.html          readiness checklist · agenda · live Calendly · contact routes · FAQ
 ├─ 404.html              branded not-found page (GitHub Pages serves it for bad paths)
 ├─ robots.txt · sitemap.xml · README.md
+├─ LICENSE · LICENSE-CONTENT.md  MIT (code) + CC BY 4.0 (content)
 ├─ docs/                 artwork used by this README (banner, palette, previews)
 └─ assets/
    ├─ css/style.css      design system, responsive, print, reduced-motion
@@ -318,4 +320,16 @@ assets for 600s), not only against `localhost`.
   (booking) and Google Fonts (typography, with system fallbacks).
 - Brand: **Vakuus** — independent certification advisory, Espoo, Finland.
 
-<p align="center"><sub>Vakuus — from zero to certified. · Content &amp; design © Vakuus, all rights reserved.</sub></p>
+---
+
+## 📄 Licence
+
+| What | Licence |
+|---|---|
+| **Source code** (`.html`, `.css`, `.js`) | [MIT](LICENSE) — copy, modify, ship, even commercially |
+| **Content, copy, design, artwork** (this README, `docs/`, `assets/img/`) | [CC BY 4.0](LICENSE-CONTENT.md) — share and adapt with attribution |
+| **Third-party assets** (Google Fonts, Calendly widget) | Their own terms apply — not covered |
+
+Credit line: *Vakuus — certification advisory site, Erdal Birinci, CC BY 4.0*.
+
+<p align="center"><sub>Vakuus — from zero to certified. · Code MIT · Content &amp; design CC BY 4.0 — © 2026 Erdal Birinci</sub></p>
