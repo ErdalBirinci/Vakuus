@@ -145,6 +145,43 @@
     document.head.appendChild(s);
   }
 
+  /* ------------------- scroll progress + back to top ------------------- */
+  function scrollUI() {
+    if (!document.body) return;
+    var bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    bar.setAttribute("aria-hidden", "true");
+    document.body.appendChild(bar);
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "to-top";
+    btn.setAttribute("aria-label", "Back to top");
+    btn.title = "Back to top";
+    btn.innerHTML =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>';
+    document.body.appendChild(btn);
+
+    var doc = document.documentElement;
+    var update = function () {
+      var max = doc.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      bar.style.width = (p * 100).toFixed(2) + "%";
+      btn.classList.toggle("is-visible", window.scrollY > 700);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    btn.addEventListener("click", function () {
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      var skip = document.querySelector(".skip-link");
+      if (skip) skip.focus({ preventScroll: true });
+    });
+  }
+
   /* ------------------------- boot ------------------------- */
   function init() {
     header();
@@ -153,6 +190,7 @@
     reveal();
     contactData();
     booking();
+    scrollUI();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

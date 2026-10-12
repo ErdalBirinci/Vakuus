@@ -64,6 +64,8 @@
 | **Booking** | Live Calendly embed — `calendly.com/erdalbirinci/30min` |
 | **Accessibility** | axe-core (WCAG 2.1 AA): **0 violations** · Lighthouse a11y **1.0** · SEO **1.0** |
 | **Pricing** | **None anywhere** — commercial scoping only happens inside a meeting |
+| **Extras** | Brand favicon (SVG/ICO) + 1200×630 social card · custom 404 · scroll progress bar · back-to-top |
+| **Structured data** | JSON-LD on every page — `ProfessionalService`, `FAQPage` (3 pages), `ItemList` (services, standards), `Person` |
 | **Live** | <https://erdalbirinci.github.io/Vakuus/> |
 
 ---
@@ -300,7 +302,8 @@ assets for 600s), not only against `localhost`.
 - [ ] Custom domain (`vakuus.fi`) + repoint canonical/OG tags
 - [ ] Anonymised case studies / project examples
 - [ ] Guidance articles (certification journal) for organic reach
-- [ ] JSON-LD structured data for the service offering
+- [x] JSON-LD structured data — `ProfessionalService` (home), `FAQPage` (home/process/contact), `ItemList` (services/standards), `Person` (about); `Service`/`OfferCatalog` still to add
+- [ ] `og:image` + canonical/OG swap together when the custom domain (vakuus.fi) goes live — the image currently points at the live Pages URL on purpose, so shares work today
 - [ ] Finnish (and Swedish) localisation of key pages
 - [ ] Optional: open Calendly in a new tab if a 1.0 best-practices score is required on `/contact`
 - [ ] Optional: self-host the three fonts to remove the Google Fonts third-party request
