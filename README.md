@@ -64,7 +64,7 @@
 | **Booking** | Live Calendly embed — `calendly.com/erdalbirinci/30min` |
 | **Accessibility** | axe-core (WCAG 2.1 AA): **0 violations** · Lighthouse a11y **1.0** · SEO **1.0** |
 | **Pricing** | **None anywhere** — commercial scoping only happens inside a meeting |
-| **Extras** | Brand favicon (SVG/ICO) + 1200×630 social card · custom 404 · scroll progress bar · back-to-top |
+| **Extras** | Brand favicon (SVG/ICO) + 1200×630 social card · custom 404 · scroll progress bar · back-to-top · **mobile sticky booking bar** · **readiness checklist** (7 statements → phases, no score) |
 | **Structured data** | JSON-LD on every page — `ProfessionalService`, `FAQPage` (3 pages), `ItemList` (services, standards), `Person` |
 | **Live** | <https://erdalbirinci.github.io/Vakuus/> |
 
@@ -79,7 +79,7 @@
 | `process.html` | The 7 phases in detail: gantt timeline, effort split, sign-off gates, FAQ | [open](https://erdalbirinci.github.io/Vakuus/process.html) |
 | `standards.html` | Standards library: ISO 27001 · 42001 · 27701 · 20000-1, SOC 2, NIST CSF, NIS2, EU AI Act, GDPR | [open](https://erdalbirinci.github.io/Vakuus/standards.html) |
 | `about.html` | Erdal Birinci — competencies and working principles (explicitly **not** a CV) | [open](https://erdalbirinci.github.io/Vakuus/about.html) |
-| `contact.html` | Booking page: agenda, live scheduler, contact routes, FAQ | [open](https://erdalbirinci.github.io/Vakuus/contact.html) |
+| `contact.html` | Booking page: **readiness checklist**, agenda, live scheduler, contact routes, FAQ | [open](https://erdalbirinci.github.io/Vakuus/contact.html) |
 
 Every page ends in the same conversion path: **book a discovery meeting**.
 
@@ -177,7 +177,8 @@ Vakuus/
 ├─ process.html          7 phases · gantt · effort split · sign-off gates
 ├─ standards.html        standards library + comparison charts
 ├─ about.html            competencies & working principles
-├─ contact.html          agenda · live Calendly · contact routes · FAQ
+├─ contact.html          readiness checklist · agenda · live Calendly · contact routes · FAQ
+├─ 404.html              branded not-found page (GitHub Pages serves it for bad paths)
 ├─ robots.txt · sitemap.xml · README.md
 ├─ docs/                 artwork used by this README (banner, palette, previews)
 └─ assets/

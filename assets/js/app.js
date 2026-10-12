@@ -145,6 +145,72 @@
     document.head.appendChild(s);
   }
 
+  /* ----------------------- readiness checklist ----------------------- */
+  function checklist() {
+    var root = $("[data-checklist]");
+    if (!root) return;
+    var out = $("[data-checklist-out]", root);
+    var boxes = $$('input[type="checkbox"]', root);
+    if (!out || !boxes.length) return;
+
+    function esc(s) {
+      return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function render() {
+      var picked = boxes.filter(function (b) { return b.checked; });
+      if (!picked.length) {
+        out.innerHTML =
+          '<p class="checklist-empty">Nothing ticked yet — start with the statement that costs you sleep.</p>';
+        return;
+      }
+      var head = picked.length === 1
+        ? "one phase to confirm"
+        : picked.length + " phases to work through";
+      var html = '<p class="checklist-kicker">Your starting point — ' + head + '</p>';
+      html += '<ul class="checklist-list">';
+      picked.forEach(function (b) {
+        html += '<li><span class="checklist-phase">Phase ' + esc(b.getAttribute("data-phase")) + '</span>' +
+          '<div><strong>' + esc(b.getAttribute("data-name")) + '</strong>' +
+          '<span>' + esc(b.getAttribute("data-rec")) + '</span></div></li>';
+      });
+      html += '</ul><p class="checklist-note">This is not a score — it only marks where the work ' +
+        'begins. The exact starting point is confirmed in phase 02, in a meeting.</p>';
+      out.innerHTML = html;
+    }
+
+    boxes.forEach(function (b) { b.addEventListener("change", render); });
+    render();
+  }
+
+  /* --------------------- mobile sticky booking bar --------------------- */
+  function stickyCTA() {
+    if (!document.body) return;
+    var bar = document.createElement("div");
+    bar.className = "cta-bar";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Book a discovery meeting");
+    var onContact = /contact\.html?$/.test(location.pathname);
+    bar.innerHTML =
+      '<span class="cta-bar-text"><strong>30 minutes, video</strong>' +
+      '<span>Discovery meeting — no obligation</span></span>' +
+      '<a class="btn btn-primary btn-sm" href="' + (onContact ? "#book" : "contact.html") + '">Book a Meeting</a>';
+    document.body.appendChild(bar);
+    document.body.classList.add("has-cta-bar");
+
+    var menu = $("#site-nav");
+    var update = function () {
+      var mobile = window.innerWidth <= 720;
+      var navOpen = !!(menu && menu.classList.contains("is-open"));
+      var show = mobile && !navOpen && window.scrollY > 480;
+      bar.classList.toggle("is-visible", show);
+      document.body.classList.toggle("cta-bar-on", mobile && show);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+  }
+
   /* ------------------- scroll progress + back to top ------------------- */
   function scrollUI() {
     if (!document.body) return;
@@ -190,6 +256,8 @@
     reveal();
     contactData();
     booking();
+    checklist();
+    stickyCTA();
     scrollUI();
   }
 

@@ -170,6 +170,75 @@
     </div>
   </section>
 
+  <!-- ============================ READINESS CHECKLIST ============================ -->
+  <section class="section section--paper-2" id="checklist">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow reveal">Two minutes before you book</p>
+        <h2 class="h2 reveal" data-delay="1">Tell us where you are today — we start there</h2>
+        <p class="lead reveal" data-delay="2">Tick everything that is true right now. Nothing is scored,
+          nothing is stored: your answers simply point at the phase where the real work begins.</p>
+      </div>
+
+      <div class="checklist reveal" data-delay="2" data-checklist>
+        <fieldset class="checklist-set">
+          <legend class="sr-only">Certification readiness statements</legend>
+
+          <label class="check-option">
+            <input type="checkbox" data-phase="01" data-name="Discovery &amp; scoping"
+              data-rec="The first meeting decides the route: ISO 27001, NIS2, SOC 2, or a lighter framework that fits the real requirement.">
+            <span>We are not sure which standard or framework we actually need</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" data-phase="02" data-name="Gap assessment"
+              data-rec="Every clause and control is tested against the evidence you have today, and you get a prioritised register with dates.">
+            <span>Nobody can tell us how far we are from being ready</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" data-phase="03" data-name="Risk &amp; scope"
+              data-rec="Scoping, risk methodology and the Statement of Applicability are written before any document is drafted.">
+            <span>We have no risk register or statement of applicability</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" data-phase="04" data-name="Implementation"
+              data-rec="Policies, procedures and controls are built to fit the systems you already run — not to look good on paper.">
+            <span>Policies and controls are missing, or live only in people's heads</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" data-phase="05" data-name="Internal audit"
+              data-rec="An independent audit and a management review show exactly what a certification body would find.">
+            <span>Evidence exists, but nobody has tested it the way an auditor will</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" data-phase="06" data-name="Stage 1 &amp; Stage 2"
+              data-rec="Audit rehearsal, evidence packs and finding responses are prepared so the two stages do not become an open-ended wait.">
+            <span>An audit with a certification body is booked, or close</span>
+          </label>
+
+          <label class="check-option">
+            <input type="checkbox" data-phase="07" data-name="Surveillance"
+              data-rec="Annual internal audit, risk refresh, control re-testing and surveillance support keep the certificate valid through the cycle.">
+            <span>We already hold a certificate and need to keep it alive</span>
+          </label>
+        </fieldset>
+
+        <output class="checklist-out" data-checklist-out aria-live="polite">
+          <p class="checklist-empty">Nothing ticked yet — start with the statement that costs you sleep.</p>
+        </output>
+
+        <div class="btn-group checklist-actions">
+          <a class="btn btn-primary" href="#book">Book a Meeting</a>
+          <a class="btn btn-ghost" href="process.html">See how the 7 phases work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ BOOKING ============================ -->
   <section class="section" id="book">
     <div class="container">
