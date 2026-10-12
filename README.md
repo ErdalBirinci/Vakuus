@@ -330,6 +330,9 @@ assets for 600s), not only against `localhost`.
 | **Content, copy, design, artwork** (this README, `docs/`, `assets/img/`) | [CC BY 4.0](LICENSE-CONTENT.md) — share and adapt with attribution |
 | **Third-party assets** (Google Fonts, Calendly widget) | Their own terms apply — not covered |
 
+The MIT file intentionally contains only the licence text (so GitHub detects it);
+the split between the two licences is explained here and in `LICENSE-CONTENT.md`.
+
 Credit line: *Vakuus — certification advisory site, Erdal Birinci, CC BY 4.0*.
 
 <p align="center"><sub>Vakuus — from zero to certified. · Code MIT · Content &amp; design CC BY 4.0 — © 2026 Erdal Birinci</sub></p>
