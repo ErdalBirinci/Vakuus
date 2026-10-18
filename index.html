@@ -31,7 +31,19 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script defer src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
 <script defer src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script defer src="assets/js/three-loader-v2.js?v=1"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "./assets/vendor/three/three.module.js",
+    "./three-hero-entry.js": "./assets/js/three-hero-entry.js"
+  }
+}
+</script>
+<script type="module">
+  import * as THREE from "three";
+  window.THREE = THREE;
+  import "./three-hero-entry.js";
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
