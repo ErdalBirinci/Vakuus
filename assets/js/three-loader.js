@@ -11,10 +11,10 @@
     var canvas = document.getElementById("hero-3d");
     if (!canvas) return;
 
-    import("./assets/vendor/three/three.module.js")
+    import("../vendor/three/three.module.js")
       .then(function (THREE) {
         window.THREE = THREE;
-        return import("./assets/js/three-hero-entry.js");
+        return import("./three-hero-entry.js");
       })
       .catch(function (e) {
         console.warn("[Vakuus] Three.js hero disabled:", e && e.message ? e.message : e);
