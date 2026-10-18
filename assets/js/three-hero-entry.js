@@ -1,21 +1,17 @@
 /* ==========================================================================
-   VAKUUS — three-hero.js
-   Premium 3D hero background (WebGL / Three.js).
-   Decorative only: all real content stays in HTML for SEO / accessibility.
-   Respects prefers-reduced-motion; degrades to a static gradient if WebGL fails.
-   Uses dynamic import() so it works as a classic <script> without type="module".
+   VAKUUS — three-hero-entry.js
+   Entry point loaded as an ES module by three-loader.js.
+   window.THREE is already set by the loader.
    ========================================================================== */
 
-(function () {
+(function (THREE) {
   "use strict";
 
-  var canvas, scene, camera, renderer, shield, rings, particles, mouse, raycaster, clock;
+  var canvas, scene, camera, renderer, shield, rings, particles, mouse, clock;
   var rafId, width, height, reduceMotion;
 
-  /* ------------------------- config ------------------------- */
   var CFG = {
     shieldRadius: 2.6,
-    shieldSegments: 44,
     ringCount: 3,
     particleCount: 120,
     rotateSpeed: 0.18,
@@ -23,17 +19,14 @@
     ease: 0.08
   };
 
-  /* ------------------------- palette ------------------------- */
   var COLORS = {
     cyan: 0x35c8ff,
     blue: 0x2e6bff,
     violet: 0x7c5cff,
     aurora: 0x14d6b0,
-    dark: 0x070d1a,
     white: 0xffffff
   };
 
-  /* ------------------------- boot ------------------------- */
   function boot() {
     canvas = document.getElementById("hero-3d");
     if (!canvas) return;
@@ -42,25 +35,16 @@
       window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    import("assets/vendor/three/three.module.js")
-      .then(function (THREE) {
-        buildScene(THREE);
-        animate();
-        window.addEventListener("resize", onResize, { passive: true });
-        window.addEventListener("mousemove", onMouseMove, { passive: true });
-        window.addEventListener("deviceorientation", onDeviceOrientation, {
-          passive: true
-        });
-      })
-      .catch(function (e) {
-        // Three.js failed to load — hero keeps its CSS gradient background.
-        console.warn("[Vakuus] Three.js hero disabled:", e && e.message ? e.message : e);
-        canvas.style.display = "none";
-      });
+    buildScene();
+    animate();
+    window.addEventListener("resize", onResize, { passive: true });
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("deviceorientation", onDeviceOrientation, {
+      passive: true
+    });
   }
 
-  /* ------------------------- scene ------------------------- */
-  function buildScene(THREE) {
+  function buildScene() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(
@@ -82,7 +66,6 @@
     renderer.setClearColor(0x070d1a, 0);
     renderer.toneMapping = THREE.ReinhardToneMapping;
 
-    /* ---- Ambient + aurora rim light ---- */
     var ambient = new THREE.AmbientLight(0xffffff, 0.35);
     scene.add(ambient);
 
@@ -94,9 +77,8 @@
     fillLight.position.set(4, -2, 3);
     scene.add(fillLight);
 
-    /* ---- Central shield / vault polyhedron (wireframe) ---- */
+    /* Shield / vault wireframe */
     shield = new THREE.Group();
-
     var geo = new THREE.IcosahedronGeometry(CFG.shieldRadius, 1);
     geo.scale(1, 1.18, 1);
 
@@ -114,13 +96,11 @@
       transparent: true,
       opacity: 0.08
     });
-    var shieldMesh = new THREE.Mesh(geo, wireMat);
-    var shieldSolid = new THREE.Mesh(geo, solidMat);
-    shield.add(shieldMesh);
-    shield.add(shieldSolid);
+    shield.add(new THREE.Mesh(geo, wireMat));
+    shield.add(new THREE.Mesh(geo, solidMat));
     scene.add(shield);
 
-    /* ---- Floating rings (orbits) ---- */
+    /* Floating rings */
     rings = new THREE.Group();
     for (var i = 0; i < CFG.ringCount; i++) {
       var radius = 2.0 + i * 1.15;
@@ -137,36 +117,37 @@
       ring.userData = {
         baseRotationX: ring.rotation.x,
         baseRotationZ: ring.rotation.z,
-        speed: 0.06 + i * 0.025,
-        radius: radius
+        speed: 0.06 + i * 0.025
       };
       rings.add(ring);
     }
     scene.add(rings);
 
-    /* ---- Particle constellation ---- */
+    /* Particle constellation */
     particles = new THREE.Group();
     var ptsGeo = new THREE.BufferGeometry();
     var positions = new Float32Array(CFG.particleCount * 3);
     var colors = new Float32Array(CFG.particleCount * 3);
     var pc = new THREE.Color();
+    var drift = [];
 
     for (var p = 0; p < CFG.particleCount; p++) {
       positions[p * 3] = (Math.random() - 0.5) * 14;
       positions[p * 3 + 1] = (Math.random() - 0.5) * 9;
       positions[p * 3 + 2] = (Math.random() - 0.5) * 6;
 
-      var c =
-        p % 3 === 0
-          ? COLORS.cyan
-          : p % 3 === 1
-          ? COLORS.blue
-          : COLORS.violet;
-      pc.set(c);
+      pc.set(p % 3 === 0 ? COLORS.cyan : p % 3 === 1 ? COLORS.blue : COLORS.violet);
       colors[p * 3] = pc.r;
       colors[p * 3 + 1] = pc.g;
       colors[p * 3 + 2] = pc.b;
+
+      drift.push({
+        x: (Math.random() - 0.5) * 0.004,
+        y: (Math.random() - 0.5) * 0.004,
+        z: (Math.random() - 0.5) * 0.004
+      });
     }
+
     ptsGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     ptsGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
@@ -178,64 +159,40 @@
       sizeAttenuation: true
     });
     var particleSystem = new THREE.Points(ptsGeo, ptsMat);
-    particleSystem.userData = { drift: [] };
-    var drift = [];
-    for (var p2 = 0; p2 < CFG.particleCount; p2++) {
-      drift.push({
-        x: (Math.random() - 0.5) * 0.004,
-        y: (Math.random() - 0.5) * 0.004,
-        z: (Math.random() - 0.5) * 0.004
-      });
-    }
-    particleSystem.userData.drift = drift;
+    particleSystem.userData = { drift: drift };
     particles.add(particleSystem);
     scene.add(particles);
 
-    /* ---- Connecting lines between nearby particles ---- */
+    /* Connecting lines */
     var lineGeo = new THREE.BufferGeometry();
-    var lineCount = CFG.particleCount * 2;
-    var linePos = new Float32Array(lineCount * 6);
+    var linePos = new Float32Array(CFG.particleCount * 2 * 6);
     lineGeo.setAttribute("position", new THREE.BufferAttribute(linePos, 3));
     var lines = new THREE.LineSegments(
       lineGeo,
-      new THREE.LineBasicMaterial({
-        color: COLORS.white,
-        transparent: true,
-        opacity: 0.06
-      })
+      new THREE.LineBasicMaterial({ color: COLORS.white, transparent: true, opacity: 0.06 })
     );
     lines.userData = { geo: lineGeo };
     particles.add(lines);
 
-    /* ---- Interaction state ---- */
     mouse = new THREE.Vector2(0, 0);
-    raycaster = new THREE.Raycaster();
     clock = new THREE.Clock();
-
     width = canvas.clientWidth;
     height = canvas.clientHeight;
   }
 
-  var particleDrift = [];
-
-  /* ------------------------- animation ------------------------- */
   function animate() {
     rafId = requestAnimationFrame(animate);
-
     if (!scene || !camera || !renderer) return;
 
     var delta = clock.getDelta();
     var time = clock.getElapsedTime();
-    var move = reduceMotion ? 0 : 0.05;
 
-    /* Slow auto-rotation */
     if (shield) {
       shield.rotation.y += CFG.rotateSpeed * delta * 1.6;
       shield.rotation.x += CFG.rotateSpeed * delta * 0.9;
       shield.position.y = Math.sin(time * CFG.floatSpeed) * 0.12;
     }
 
-    /* Rings counter-rotate */
     if (rings) {
       rings.children.forEach(function (ring, i) {
         ring.rotation.z =
@@ -246,14 +203,13 @@
       });
     }
 
-    /* Particles drift slowly */
     if (particles) {
       var ps = particles.children[0];
       if (ps) {
         var pos = ps.geometry.attributes.position.array;
         var drift = ps.userData.drift;
         for (var p = 0; p < CFG.particleCount; p++) {
-          var d = drift[p] || { x: 0, y: 0, z: 0 };
+          var d = drift[p];
           pos[p * 3] += d.x;
           pos[p * 3 + 1] += d.y;
           pos[p * 3 + 2] += d.z;
@@ -262,13 +218,10 @@
           if (Math.abs(pos[p * 3 + 2]) > 4) pos[p * 3 + 2] = (Math.random() - 0.5) * 6;
         }
         ps.geometry.attributes.position.needsUpdate = true;
-
-        /* Rebuild connecting lines */
-        updateLines(lines, pos);
+        updateLines(pos);
       }
     }
 
-    /* Mouse parallax */
     if (shield && !reduceMotion) {
       var targetX = (mouse.x - 0.5) * 0.4;
       var targetY = -(mouse.y - 0.5) * 0.4;
@@ -279,11 +232,11 @@
     renderer.render(scene, camera);
   }
 
-  /* ------------------------- lines ------------------------- */
-  function updateLines(lines, positions) {
+  function updateLines(positions) {
+    if (!particles) return;
+    var lines = particles.children[1];
     if (!lines) return;
-    var geo = lines.userData.geo;
-    var attr = geo.attributes.position;
+    var attr = lines.geometry.attributes.position;
     var count = 0;
     var threshold = 2.6;
     var total = CFG.particleCount;
@@ -296,21 +249,15 @@
         var d = Math.sqrt(dx * dx + dy * dy + dz * dz);
         if (d < threshold && count < attr.count / 2) {
           attr.setXYZ(count * 2, positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
-          attr.setXYZ(
-            count * 2 + 1,
-            positions[j * 3],
-            positions[j * 3 + 1],
-            positions[j * 3 + 2]
-          );
+          attr.setXYZ(count * 2 + 1, positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]);
           count++;
         }
       }
     }
     attr.needsUpdate = true;
-    geo.setDrawRange(0, count * 2);
+    lines.geometry.setDrawRange(0, count * 2);
   }
 
-  /* ------------------------- input ------------------------- */
   function onMouseMove(e) {
     mouse.x = e.clientX / window.innerWidth;
     mouse.y = e.clientY / window.innerHeight;
@@ -318,23 +265,17 @@
 
   function onDeviceOrientation(e) {
     if (reduceMotion) return;
-    var x = (e.gamma || 0) / 90;
-    var y = (e.beta || 0) / 90;
-    mouse.x = (x + 1) / 2;
-    mouse.y = (y + 1) / 2;
+    mouse.x = ((e.gamma || 0) / 90 + 1) / 2;
+    mouse.y = ((e.beta || 0) / 90 + 1) / 2;
   }
 
-  /* ------------------------- resize ------------------------- */
   function onResize() {
     if (!camera || !renderer) return;
-    width = canvas.clientWidth;
-    height = canvas.clientHeight;
-    camera.aspect = width / Math.max(height, 1);
+    camera.aspect = canvas.clientWidth / Math.max(canvas.clientHeight, 1);
     camera.updateProjectionMatrix();
-    renderer.setSize(width, height);
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   }
 
-  /* ------------------------- teardown ------------------------- */
   function destroy() {
     if (rafId) cancelAnimationFrame(rafId);
     if (renderer) {
@@ -348,13 +289,11 @@
     particles = null;
   }
 
-  /* ------------------------- boot ------------------------- */
+  window.VAKUUS_THREE = { destroy: destroy };
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
   } else {
     boot();
   }
-
-  /* Expose for app.js */
-  window.VAKUUS_THREE = { destroy: destroy };
-})();
+})(window.THREE);
