@@ -3,12 +3,11 @@
    Premium 3D hero background (WebGL / Three.js).
    Decorative only: all real content stays in HTML for SEO / accessibility.
    Respects prefers-reduced-motion; degrades to a static gradient if WebGL fails.
+   Uses dynamic import() so it works as a classic <script> without type="module".
    ========================================================================== */
 
 (function () {
   "use strict";
-
-  import * as THREE from "./vendor/three/three.module.js";
 
   var canvas, scene, camera, renderer, shield, rings, particles, mouse, raycaster, clock;
   var rafId, width, height, reduceMotion;
@@ -34,8 +33,8 @@
     white: 0xffffff
   };
 
-  /* ------------------------- init ------------------------- */
-  function init() {
+  /* ------------------------- boot ------------------------- */
+  function boot() {
     canvas = document.getElementById("hero-3d");
     if (!canvas) return;
 
@@ -43,23 +42,25 @@
       window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    try {
-      buildScene();
-      animate();
-      window.addEventListener("resize", onResize, { passive: true });
-      window.addEventListener("mousemove", onMouseMove, { passive: true });
-      window.addEventListener("deviceorientation", onDeviceOrientation, {
-        passive: true
+    import("assets/vendor/three/three.module.js")
+      .then(function (THREE) {
+        buildScene(THREE);
+        animate();
+        window.addEventListener("resize", onResize, { passive: true });
+        window.addEventListener("mousemove", onMouseMove, { passive: true });
+        window.addEventListener("deviceorientation", onDeviceOrientation, {
+          passive: true
+        });
+      })
+      .catch(function (e) {
+        // Three.js failed to load — hero keeps its CSS gradient background.
+        console.warn("[Vakuus] Three.js hero disabled:", e && e.message ? e.message : e);
+        canvas.style.display = "none";
       });
-    } catch (e) {
-      // WebGL not available — hero keeps its CSS gradient background.
-      console.warn("[Vakuus] Three.js hero disabled:", e && e.message ? e.message : e);
-      canvas.style.display = "none";
-    }
   }
 
   /* ------------------------- scene ------------------------- */
-  function buildScene() {
+  function buildScene(THREE) {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(
@@ -97,7 +98,6 @@
     shield = new THREE.Group();
 
     var geo = new THREE.IcosahedronGeometry(CFG.shieldRadius, 1);
-    // Stretch vertically to feel like a vault / shield door.
     geo.scale(1, 1.18, 1);
 
     var wireMat = new THREE.MeshBasicMaterial({
@@ -179,13 +179,15 @@
     });
     var particleSystem = new THREE.Points(ptsGeo, ptsMat);
     particleSystem.userData = { drift: [] };
+    var drift = [];
     for (var p2 = 0; p2 < CFG.particleCount; p2++) {
-      particleSystem.userData.drift.push({
+      drift.push({
         x: (Math.random() - 0.5) * 0.004,
         y: (Math.random() - 0.5) * 0.004,
         z: (Math.random() - 0.5) * 0.004
       });
     }
+    particleSystem.userData.drift = drift;
     particles.add(particleSystem);
     scene.add(particles);
 
@@ -202,22 +204,25 @@
         opacity: 0.06
       })
     );
-    lines.userData = { positions: positions, geo: lineGeo };
+    lines.userData = { geo: lineGeo };
     particles.add(lines);
 
     /* ---- Interaction state ---- */
     mouse = new THREE.Vector2(0, 0);
     raycaster = new THREE.Raycaster();
     clock = new THREE.Clock();
-    particleDrift = [];
 
     width = canvas.clientWidth;
     height = canvas.clientHeight;
   }
 
+  var particleDrift = [];
+
   /* ------------------------- animation ------------------------- */
   function animate() {
     rafId = requestAnimationFrame(animate);
+
+    if (!scene || !camera || !renderer) return;
 
     var delta = clock.getDelta();
     var time = clock.getElapsedTime();
@@ -246,8 +251,9 @@
       var ps = particles.children[0];
       if (ps) {
         var pos = ps.geometry.attributes.position.array;
+        var drift = ps.userData.drift;
         for (var p = 0; p < CFG.particleCount; p++) {
-          var d = particleDrift[p] || { x: 0, y: 0, z: 0 };
+          var d = drift[p] || { x: 0, y: 0, z: 0 };
           pos[p * 3] += d.x;
           pos[p * 3 + 1] += d.y;
           pos[p * 3 + 2] += d.z;
@@ -272,8 +278,6 @@
 
     renderer.render(scene, camera);
   }
-
-  var particleDrift = [];
 
   /* ------------------------- lines ------------------------- */
   function updateLines(lines, positions) {
@@ -314,7 +318,7 @@
 
   function onDeviceOrientation(e) {
     if (reduceMotion) return;
-    var x = (e.gamma || 0) / 90; // -1 .. 1
+    var x = (e.gamma || 0) / 90;
     var y = (e.beta || 0) / 90;
     mouse.x = (x + 1) / 2;
     mouse.y = (y + 1) / 2;
@@ -346,9 +350,9 @@
 
   /* ------------------------- boot ------------------------- */
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", boot);
   } else {
-    init();
+    boot();
   }
 
   /* Expose for app.js */
