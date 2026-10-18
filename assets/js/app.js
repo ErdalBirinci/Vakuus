@@ -248,12 +248,57 @@
     });
   }
 
+  /* ------------------- premium GSAP animations ------------------- */
+  function premiumAnimations() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Stats counters */
+    gsap.utils.toArray("[data-count-to]").forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-count-to"), 10) || 0;
+      gsap.fromTo(el,
+        { innerText: 0 },
+        {
+          innerText: target,
+          duration: 1.4,
+          ease: "power2.out",
+          snap: { innerText: 1 },
+          scrollTrigger: {
+            trigger: el,
+            start: "top 82%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    /* Tile progress bars */
+    gsap.utils.toArray(".tile-bar i").forEach(function (el) {
+      gsap.fromTo(el,
+        { width: 0 },
+        {
+          width: el.getAttribute("data-fill") || "100%",
+          duration: 1.4,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 82%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+  }
+
   /* ------------------------- boot ------------------------- */
   function init() {
     header();
     nav();
     activeLink();
     reveal();
+    premiumAnimations();
     contactData();
     booking();
     checklist();
