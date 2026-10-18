@@ -8,6 +8,8 @@
 (function () {
   "use strict";
 
+  import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+
   var canvas, scene, camera, renderer, shield, rings, particles, mouse, raycaster, clock;
   var rafId, width, height, reduceMotion;
 
