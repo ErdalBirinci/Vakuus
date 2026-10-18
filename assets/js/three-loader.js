@@ -7,8 +7,8 @@
 (function () {
   "use strict";
 
-  var THREE_MODULE_URL = "assets/vendor/three/three.module.js";
-  var HERO_MODULE_URL = "assets/js/three-hero-entry.js";
+  var THREE_MODULE_URL = "./assets/vendor/three/three.module.js";
+  var HERO_MODULE_URL = "./assets/js/three-hero-entry.js";
 
   function load() {
     // Create a module script tag to import Three.js
