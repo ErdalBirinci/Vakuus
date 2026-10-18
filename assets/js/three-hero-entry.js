@@ -1,8 +1,10 @@
 /* ==========================================================================
    VAKUUS — three-hero-entry.js
-   Entry point loaded as an ES module by three-loader.js.
-   window.THREE is already set by the loader.
+   Hero 3D scene entry point. Imported as an ES module by the import map
+   script in index.html. Imports Three.js directly.
    ========================================================================== */
+
+import * as THREE from "three";
 
 (function (THREE) {
   "use strict";
@@ -296,4 +298,4 @@
   } else {
     boot();
   }
-})(window.THREE);
+})(THREE);
